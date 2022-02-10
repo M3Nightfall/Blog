@@ -1,0 +1,23 @@
+<div id="<%= dom_id post %>">
+  <p>
+    <strong>Tilte:</strong>
+    <%= post.tilte %>
+  </p>
+
+  <p>
+    posted <%= time_tag post.created_at, "data-local": "time-ago" %>
+  <p>
+
+  
+
+
+  <p>
+    <strong>
+    <%= pluralize(post.comments.count, 'comment') %>
+    </strong>
+  <p>
+    <strong>Content:</strong>
+    <%= post.content %>
+  </p>
+
+</div>

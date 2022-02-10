@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+   <!-- posted by <a ng-href="#/users/{{post.user.email}}"> <=% @post.user.email %></a> -->
+    <% if post.user %>
+        posted by <%= post.user.email %>
+    <% end %>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+</div>
+
+
+<% if user_signed_in? %>
+  <%= button_to "Sign out", destroy_user_session_path, :method => :delete %> <br>
+  <%= link_to "New post", new_post_path %>
+<% else (!user_signed_in?) %>
+  <%= link_to "Sign up", new_user_registration_path %> <br>
+  <%= link_to "Sign in", new_user_session_path %> <br>
+<% end %>
